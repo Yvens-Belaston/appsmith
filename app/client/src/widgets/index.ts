@@ -8,6 +8,18 @@ import { EEWidgets } from "ee/widgets";
 const WidgetLoaders = new Map<string, () => Promise<typeof BaseWidget>>([
   ...EEWDSWidgets,
   ...EEWidgets,
+  [
+    "AUDIO_RECORDER_WIDGET",
+    async () => import("./AudioRecorderWidget").then((m) => m.default),
+  ],
+  [
+    "LOGO_MENU_WIDGET",
+    async () => import("./LogoMenuWidget").then((m) => m.default),
+  ],
+  [
+    "CUSTOM_WIDGET",
+    async () => import("./CustomWidget").then((m) => m.default),
+  ],
   // WDS Widgets
   [
     "WDS_BUTTON_WIDGET",
@@ -94,10 +106,6 @@ const WidgetLoaders = new Map<string, () => Promise<typeof BaseWidget>>([
       import("widgets/wds/WDSMenuButtonWidget").then(
         (m) => m.WDSMenuButtonWidget,
       ),
-  ],
-  [
-    "CUSTOM_WIDGET",
-    async () => import("./CustomWidget").then((m) => m.default),
   ],
   [
     anvilWidgets.SECTION_WIDGET,
@@ -269,10 +277,6 @@ const WidgetLoaders = new Map<string, () => Promise<typeof BaseWidget>>([
   [
     "STATBOX_WIDGET",
     async () => import("./StatboxWidget").then((m) => m.default),
-  ],
-  [
-    "AUDIO_RECORDER_WIDGET",
-    async () => import("./AudioRecorderWidget").then((m) => m.default),
   ],
   [
     "DOCUMENT_VIEWER_WIDGET",
